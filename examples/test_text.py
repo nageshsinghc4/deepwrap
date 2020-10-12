@@ -8,14 +8,14 @@ test_b = fetch_20newsgroups(subset='test', categories=categories, shuffle=True)
 (x_test, y_test) = (test_b.data, test_b.target)
 
 # build, train, and validate model (Transformer is wrapper around transformers library)
-import dltkdl
-from dltkdl import text
+import deepwrap
+from deepwrap import text
 
 MODEL_NAME = 'distilbert-base-uncased'
 t = text.Transformer(MODEL_NAME, maxlen=500, class_names=train_b.target_names)
 trn = t.preprocess_train(x_train, y_train)
 val = t.preprocess_test(x_test, y_test)
 model = t.get_classifier()
-learner = dltkdl.get_learner(model, train_data=trn, val_data=val, batch_size=6)
+learner = deepwrap.get_learner(model, train_data=trn, val_data=val, batch_size=6)
 learner.fit_onecycle(5e-5, 4)
 learner.validate(class_names=t.get_classes())  # class_names must be string values
