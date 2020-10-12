@@ -89,7 +89,7 @@ class Learner(ABC):
         a classification report.
         This is currently only supported for binary and multiclass
         classification, not multilabel classification.
-        By default, this uses val_data, as supplied to dltkdl.get_learner().
+        By default, this uses val_data, as supplied to deepwrap.get_learner().
         Other validation or test data can be optionally be supplied as argument via <test_data> argument.
         Supply class_names to include labels instead of intenger class integer values in classification report.
         Args:
@@ -113,7 +113,7 @@ class Learner(ABC):
         a classification report.
         This is currently only supported for binary and multiclass
         classification, not multilabel classification.
-        By default, this uses val_data, as supplied to dltkdl.get_learner().
+        By default, this uses val_data, as supplied to deepwrap.get_learner().
         Other validation or test data can be optionally be supplied as argument.
         Supply class_names to include labels instead of intenger class integer values in classification report.
         Args:
@@ -315,7 +315,7 @@ class Learner(ABC):
         """
         loads model from folder. Note: **kwargs included for backwards compatibility only,
         as TransformerTextClassLearner.load_model was removed in v0.18.0. Args: fpath(str): path to folder containing
-        model custom_objects(dict): custom objects required to load model. For models included with dltkdl,
+        model custom_objects(dict): custom objects required to load model. For models included with deepwrap,
         this is populated automatically and can be disregarded.
 
         """
@@ -1400,8 +1400,8 @@ def load_predictor(fpath, batch_size=U.DEFAULT_BS):
 
     # preprocessing functions in ImageDataGenerators are not pickable
     # so, we must reconstruct
-    if hasattr(preproc, 'datagen') and hasattr(preproc.datagen, 'dltkdl_preproc'):
-        preproc_name = preproc.datagen.dltkdl_preproc
+    if hasattr(preproc, 'datagen') and hasattr(preproc.datagen, 'deepwrap_preproc'):
+        preproc_name = preproc.datagen.deepwrap_preproc
         if preproc_name == 'resnet50':
             preproc.datagen.preprocessing_function = pre_resnet50
         elif preproc_name == 'mobilenet':
@@ -1419,7 +1419,7 @@ def load_predictor(fpath, batch_size=U.DEFAULT_BS):
             ImagePreprocessor, TabularPreprocessor, TextPreprocessor,
             NERPreprocessor)):  # NodePreprocessor, LinkPreprocessor,
 
-        raise ValueError('preproc must be instance of dltkdl.preprocessor.Preprocessor')
+        raise ValueError('preproc must be instance of deepwrap.preprocessor.Preprocessor')
     if isinstance(preproc, ImagePreprocessor):
         return ImagePredictor(model, preproc, batch_size=batch_size)
 
