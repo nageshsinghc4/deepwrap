@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Tests of ktrain text classification flows
+Tests of deepwrap text classification flows
 """
 from unittest import TestCase, main, skip
 import numpy as np
