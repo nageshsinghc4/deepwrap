@@ -74,7 +74,7 @@ tf.autograph.set_verbosity(1)
 # tf.autograph.set_verbosity(1)
 
 if version.parse(tf.__version__) < version.parse('2.0'):
-    raise Exception('As of v0.8.x, dltkdl needs TensorFlow 2. Please upgrade TensorFlow.')
+    raise Exception('As of v0.8.x, deepwrap needs TensorFlow 2. Please upgrade TensorFlow.')
 
 os.environ['TF_KERAS'] = '1'  # to use keras_bert package below with tf.Keras
 
@@ -208,7 +208,7 @@ try:
 except:
     PIL_INSTALLED = False
 
-SG_ERRMSG = 'dltkdl currently uses a forked version of stellargraph v0.8.2. ' + \
+SG_ERRMSG = 'deepwrap currently uses a forked version of stellargraph v0.8.2. ' + \
             'Please install with: ' + \
             'pip install git+https://github.com/amaiya/stellargraph@no_tf_dep_082'
 
