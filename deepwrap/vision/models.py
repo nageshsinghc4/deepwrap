@@ -38,7 +38,7 @@ def pretrained_datagen(data, name):
     idg = data.image_data_generator
     if name == PRETRAINED_RESNET50:
         idg.preprocessing_function = pre_resnet50
-        idg.ktrain_preproc = 'resnet50'
+        idg.deepwrap_preproc = 'resnet50'
         idg.rescale = None
         idg.featurewise_center = False
         idg.samplewise_center = False
@@ -47,7 +47,7 @@ def pretrained_datagen(data, name):
         idg.zca_whitening = False
     elif name == PRETRAINED_MOBILENET:
         idg.preprocessing_function = pre_mobilenet
-        idg.ktrain_preproc = 'mobilenet'
+        idg.deepwrap_preproc = 'mobilenet'
         idg.rescale = None
         idg.featurewise_center = False
         idg.samplewise_center = False
@@ -56,7 +56,7 @@ def pretrained_datagen(data, name):
         idg.zca_whitening = False
     elif name == PRETRAINED_INCEPTION:
         idg.preprocessing_function = pre_inception
-        idg.ktrain_preproc = 'inception'
+        idg.deepwrap_preproc = 'inception'
         idg.rescale = None
         idg.featurewise_center = False
         idg.samplewise_center = False
@@ -216,7 +216,7 @@ def image_model(name,
     if not U.is_iter(train_data):
         raise ValueError('train_data must be an Keras iterator ' + \
                          '(e.g., DirectoryIterator, DataframIterator, ' + \
-                         'NumpyArrayIterator) - please use the ktrain.data.images_from* ' + \
+                         'NumpyArrayIterator) - please use the deepwrap.data.images_from* ' + \
                          'functions')
 
     # set pretrained flag
@@ -239,7 +239,7 @@ def image_model(name,
         pretrained_datagen(val_data, name)
         U.vprint('The normalization scheme has been changed for use with a %s' % (name) + \
                  ' model. If you decide to use a different model, please reload your' + \
-                 ' dataset with a ktrain.vision.data.images_from* function.\n', verbose=verbose)
+                 ' dataset with a deepwrap.vision.data.images_from* function.\n', verbose=verbose)
 
     # determine if multilabel
     if multilabel is None:
@@ -362,7 +362,7 @@ def build_predefined(
     """
     Builds a pre-defined architecture supported in Keras.
     Args:
-        name (str): one of ktrain.vision.model.PREDEFINED_MODELS
+        name (str): one of deepwrap.vision.model.PREDEFINED_MODELS
         num_classes (int): # of classes
         input_shape (tuple): the input shape including channels
         freeze_layers (int): number of early layers to freeze.
