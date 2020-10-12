@@ -2,7 +2,7 @@ from .imports import *
 from .data import Dataset
 
 # ------------------------------------------------------------------------------
-# DLTK-DL DEFAULTS
+# DEEPWRAP DEFAULTS
 # ------------------------------------------------------------------------------
 DEFAULT_WD = 0.01
 
@@ -707,7 +707,7 @@ class YTransformDataFrame(YTransform):
 
         new_lab_cols = self.get_label_columns(squeeze=False)
         if len(new_lab_cols) != targets.shape[1]:
-            raise ValueError('mismatch between target shape and number of labels - please open dltkdl GitHub issue')
+            raise ValueError('mismatch between target shape and number of labels - please open deepwrap GitHub issue')
         for i, col in enumerate(new_lab_cols):
             df[col] = targets[:, i]
         df[new_lab_cols] = targets
