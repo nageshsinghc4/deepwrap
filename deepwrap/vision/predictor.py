@@ -37,12 +37,12 @@ class ImagePredictor(Predictor):
         try:
             import eli5
         except:
-            msg = 'dltkdl requires a forked version of eli5 to support tf.keras. ' + \
+            msg = 'deepwrap requires a forked version of eli5 to support tf.keras. ' + \
                   'Install with: pip install git+https://github.com/amaiya/eli5@tfkeras_0_10_1'
             warnings.warn(msg)
             return
 
-        # if not hasattr(eli5, 'DLTKDL'):
+        # if not hasattr(eli5, 'DEEPWRAP'):
         if not hasattr(eli5, 'DEEPWRAP_ELI5_TAG') or eli5.DEEPWRAP_ELI5_TAG != DEEPWRAP_ELI5_TAG:
             warnings.warn("Since eli5 does not yet support tf.keras, deepwrap uses a forked version of eli5.  " + \
                           "We do not detect this forked version (or it is out-of-date), so predictor.explain may not "
