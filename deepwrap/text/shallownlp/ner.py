@@ -20,7 +20,7 @@ class NER:
             warnings.warn("Please add os.environ['DISABLE_V2_BEHAVIOR'] = '1' at top of your script or notebook")
             msg = "\nNER in ktrain uses the CRF module from keras_contrib, which is not yet\n" +\
                     "fully compatible with TensorFlow 2. To use NER, you must add the following to the top of your\n" +\
-                    "script or notebook BEFORE you import ktrain (after restarting runtime):\n\n" +\
+                    "script or notebook BEFORE you import deepwrap (after restarting runtime):\n\n" +\
                   "import os\n" +\
                   "os.environ['DISABLE_V2_BEHAVIOR'] = '1'\n"
             print(msg)
@@ -51,10 +51,10 @@ class NER:
            from contextlib import redirect_stdout
            f = io.StringIO()
            with redirect_stdout(f):
-               import ktrain
+               import deepwrap
         except:
-           raise ValueError('ktrain could not be imported. Install with: pip install ktrain')
-        self.predictor = ktrain.load_predictor(fpath)
+           raise ValueError('deepwrap could not be imported. Install with: pip install deepwrap')
+        self.predictor = deepwrap.load_predictor(fpath)
 
 
     def predict(self, texts, merge_tokens=True):
