@@ -216,7 +216,7 @@ ALLENNLP_ERRMSG = 'To use ELMo embedings, please install allenlp:\n' + \
                   'pip install allennlp'
 
 # ELI5
-KTRAIN_ELI5_TAG = '0.10.1-1'
+DEEPWRAP_ELI5_TAG = '0.10.1-1'
 
 # Suppress Warnings
 SUPPRESS_DEP_WARNINGS = strtobool(os.environ.get('SUPPRESS_DEP_WARNINGS', '1'))
