@@ -42,19 +42,19 @@ def get_wv_path(wv_path_or_url=WV_URL):
     if not wv_path_or_url.endswith('.vec.zip') and not wv_path_or_url.endswith('vec.gz'):
         raise ValueError('If wv_path_or_url is URL, must be .vec.zip filea from Facebook fasttext site.')
 
-    ktrain_data = U.get_ktrain_data()
-    zip_fpath = os.path.join(ktrain_data, fname_from_url(wv_path_or_url))
-    wv_path = os.path.join(ktrain_data, os.path.splitext(fname_from_url(wv_path_or_url))[0])
+    deepwrap_data = U.get_deepwrap_data()
+    zip_fpath = os.path.join(deepwrap_data, fname_from_url(wv_path_or_url))
+    wv_path = os.path.join(deepwrap_data, os.path.splitext(fname_from_url(wv_path_or_url))[0])
     if not os.path.isfile(wv_path):
         # download zip
-        print('downloading pretrained word vectors to %s ...' % (ktrain_data))
+        print('downloading pretrained word vectors to %s ...' % (deepwrap_data))
         U.download(wv_path_or_url, zip_fpath)
 
         # unzip
         print('\nextracting pretrained word vectors...')
         if wv_path_or_url.endswith('.vec.zip'):
             with zipfile.ZipFile(zip_fpath, 'r') as zip_ref:
-                zip_ref.extractall(ktrain_data)
+                zip_ref.extractall(deepwrap_data)
         else:  # .vec.gz
             with gzip.open(zip_fpath, 'rb') as f_in:
                 with open(wv_path, 'wb') as f_out:
@@ -122,9 +122,9 @@ def get_bert_path(lang='en'):
         bert_url = BERT_URL_CN
     else:
         bert_url = BERT_URL_MULTI
-    ktrain_data = U.get_ktrain_data()
-    zip_fpath = os.path.join(ktrain_data, fname_from_url(bert_url))
-    bert_path = os.path.join(ktrain_data, os.path.splitext(fname_from_url(bert_url))[0])
+    deepwrap_data = U.get_deepwrap_data()
+    zip_fpath = os.path.join(deepwrap_data, fname_from_url(bert_url))
+    bert_path = os.path.join(deepwrap_data, os.path.splitext(fname_from_url(bert_url))[0])
     if not os.path.isdir(bert_path) or \
             not os.path.isfile(os.path.join(bert_path, 'bert_config.json')) or \
             not os.path.isfile(os.path.join(bert_path, 'bert_model.ckpt.data-00000-of-00001')) or \
@@ -138,7 +138,7 @@ def get_bert_path(lang='en'):
         # unzip
         print('\nextracting pretrained BERT model...')
         with zipfile.ZipFile(zip_fpath, 'r') as zip_ref:
-            zip_ref.extractall(ktrain_data)
+            zip_ref.extractall(deepwrap_data)
         print('done.\n')
 
         # cleanup
@@ -765,7 +765,7 @@ class TransformersPreprocessor(TextPreprocessor):
 
     def __setstate__(self, state):
         """
-        For backwards compatibility with previous versions of ktrain
+        For backwards compatibility with previous versions of deepwrap
         that saved tokenizer and did not use ytransform
         """
         self.__dict__.update(state)
@@ -1010,8 +1010,8 @@ class Transformer(TransformersPreprocessor):
                                      will return tf.Datasets for direct use with model.fit
                                      in tf.Keras.
                                      If True, preprocess_train and preprocess_test will
-                                     return a ktrain TransformerDataset object for use with
-                                     ktrain.get_learner.
+                                     return a deepwrap TransformerDataset object for use with
+                                     deepwrap.get_learner.
             batch_size (int): batch_size - only required if use_with_learner=False
         """
         multilabel = None  # force discovery of multilabel task from data in preprocess_train->set_multilabel
@@ -1108,7 +1108,7 @@ class TransformerEmbedding():
         self.tokenizer = self.tokenizer_type.from_pretrained(model_name)
         self.model = self._load_pretrained(model_name)
         try:
-            self.embsize = self.embed('ktrain', word_level=False).shape[1]  # (batch_size, embsize)
+            self.embsize = self.embed('deepwrap', word_level=False).shape[1]  # (batch_size, embsize)
         except:
             warnings.warn('could not determine Embedding size')
         if type(self.model).__name__ not in ['TFBertModel', 'TFDistilBertModel', 'TFAlbertModel']:
