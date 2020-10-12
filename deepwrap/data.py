@@ -12,14 +12,14 @@ class Dataset:
     must still be implemented.
     The signature of to_tfdataset is as follows:
     def to_tfdataset(self, train=True)
-    See ktrain.text.preprocess.TransformerDataset as an example.
+    See deepwrap.text.preprocess.TransformerDataset as an example.
     """
 
-    # required: used by ktrain.core.Learner instances
+    # required: used by deepwrap.core.Learner instances
     def nsamples(self):
         raise NotImplemented
 
-    # required: used by ktrain.core.Learner instances
+    # required: used by deepwrap.core.Learner instances
     def get_y(self):
         raise NotImplemented
 
@@ -95,7 +95,7 @@ class TFDataset(Dataset):
 
 class SequenceDataset(Dataset, Sequence):
     """
-    Base class for custom datasets in ktrain.
+    Base class for custom datasets in deepwrap.
     If subclass of Dataset implements a method to to_tfdataset
     that converts the data to a tf.Dataset, then this will be
     invoked by Learner instances just prior to training so
@@ -104,7 +104,7 @@ class SequenceDataset(Dataset, Sequence):
     must still be implemented.
     The signature of to_tfdataset is as follows:
     def to_tfdataset(self, training=True)
-    See ktrain.text.preprocess.TransformerDataset as an example.
+    See deepwrap.text.preprocess.TransformerDataset as an example.
     """
 
     def __init__(self, batch_size=32):
