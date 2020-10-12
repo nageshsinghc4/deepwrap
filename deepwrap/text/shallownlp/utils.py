@@ -1,7 +1,7 @@
 #
 # The ShallowNLP is kept self-contained for now.
 # Thus, some or all of the functions here are copied from
-# ktrain.text.textutils
+# deepwrap.text.textutils
 from re import U
 
 from numpy.testing import verbose
