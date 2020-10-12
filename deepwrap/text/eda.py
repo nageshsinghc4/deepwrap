@@ -17,7 +17,7 @@ class TopicModel:
         """
         Fits a topic model to documents in <texts>.
         Example:
-            tm = ktrain.text.get_topic_model(docs, n_topics=20,
+            tm = deepwrap.text.get_topic_model(docs, n_topics=20,
                                             n_features=1000, min_df=2, max_df=0.95)
         Args:
             texts (list of str): list of texts
@@ -80,7 +80,7 @@ class TopicModel:
         """
         Fits a topic model to documents in <texts>.
         Example:
-            tm = ktrain.text.get_topic_model(docs, n_topics=20,
+            tm = deepwrap.text.get_topic_model(docs, n_topics=20,
                                             n_features=1000, min_df=2, max_df=0.95)
         Args:
             min_df:
