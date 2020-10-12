@@ -340,7 +340,7 @@ def data_arg_check(train_data=None, val_data=None, train_required=False, val_req
     if train_data is not None and not is_iter(train_data, ndarray_only):
         if bad_data_tuple(train_data):
             err_msg = 'data must be tuple of numpy.ndarrays'
-            if not ndarray_only: err_msg += ' or an instance of ktrain.Dataset'
+            if not ndarray_only: err_msg += ' or an instance of deepwrap.Dataset'
             raise ValueError(err_msg)
     if val_data is not None and not is_iter(val_data, ndarray_only):
         if bad_data_tuple(val_data):
@@ -455,12 +455,12 @@ def download(url, filename):
                 sys.stdout.flush()
 
 
-def get_ktrain_data():
+def get_deepwrap_data():
     home = os.path.expanduser('~')
-    ktrain_data = os.path.join(home, 'ktrain_data')
-    if not os.path.isdir(ktrain_data):
-        os.mkdir(ktrain_data)
-    return ktrain_data
+    deepwrap_data = os.path.join(home, 'deepwrap_data')
+    if not os.path.isdir(deepwrap_data):
+        os.mkdir(deepwrap_data)
+    return deepwrap_data
 
 
 # ------------------------------------------------------------------------------
