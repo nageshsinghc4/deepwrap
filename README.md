@@ -27,12 +27,12 @@ On Google Colab, TensorFlow 2 should be already installed. You should be able to
 
 Since some deepwrap dependencies have not yet been migrated to tf.keras in TensorFlow 2 (or may have other issues), deepwrap is temporarily using forked versions of some libraries. If not installed, deepwrap will complain when a method or function needing either of these libraries is invoked. 
 
-### Available pretrained algorithms:
+### Available algorithms under deepwrap:
 
-#### Artificial Neural Network : 
-1. **Multilayer perceptron or mlp**: a configurable multilayer perceptron with categorical variable embeddings.
+#### Artificial Neural Network : For tabular dataset. 
+1. **mlp**: a configurable multilayer perceptron with categorical variable embeddings.
 
-#### Convolutional Neural Network :
+#### Convolutional Neural Network : For image/video dataset
 1. **pretrained_resnet50**: 50-layer Residual Network (pretrained on ImageNet)
 2. **resnet50**: 50-layer Residual Network (randomly initialized)
 3. **pretrained_mobilenet**: MobileNet Neural Network (pretrained on ImageNet)
@@ -42,7 +42,7 @@ Since some deepwrap dependencies have not yet been migrated to tf.keras in Tenso
 7. **wrn22**: 22-layer Wide Residual Network (randomly initialized)
 8. **default_cnn**: a default Convolutional Neural Network
 
-#### Recurrent neural Network :
+#### Recurrent neural Network : For sequenced datasets like text.
 1. **fasttext**: a fastText-like model [http://arxiv.org/pdf/1607.01759.pdf]
 2. **logreg**: logistic regression using a trainable Embedding layer
 3. **nbsvm**: NBSVM model [http://www.aclweb.org/anthology/P12-2018]
@@ -55,7 +55,7 @@ Since some deepwrap dependencies have not yet been migrated to tf.keras in Tenso
 
 You can also chckout step-by step implementation by following python notebooks under tutorial folder. 
 
-Example **Hourse price prediction using Multilayer perceptron Neural Network**
+Example **Hourse price prediction using mlp**
 ```
 import urllib.request
 import pandas as pd
