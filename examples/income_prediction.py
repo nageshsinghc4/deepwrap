@@ -15,8 +15,8 @@ import numpy as np
 
 pd.set_option('display.max_columns', None)
 
-import dltkdl
-from dltkdl import tabledata
+import deepwrap
+from deepwrap import tabledata
 
 # training set
 # download dataset
