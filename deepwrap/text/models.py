@@ -63,9 +63,9 @@ def _text_model(name, train_data, preproc=None, multilabel=None, classification=
                       - 'bigru' for Bidirectional GRU with pretrained word vectors
                       - 'bert' for BERT Text Classification
                       - 'distilbert' for Hugging Face DistilBert model
-        train_data (tuple): a tuple of numpy.ndarrays: (x_train, y_train) or ktrain.Dataset instance
+        train_data (tuple): a tuple of numpy.ndarrays: (x_train, y_train) or deepwrap.Dataset instance
                             returned from one of the texts_from_* functions
-        preproc: a ktrain.text.TextPreprocessor instance.
+        preproc: a deepwrap.text.TextPreprocessor instance.
                  As of v0.8.0, this is required.
         multilabel (bool):  If True, multilabel model will be returned.
                             If false, binary/multiclass model will be returned.
@@ -81,7 +81,7 @@ def _text_model(name, train_data, preproc=None, multilabel=None, classification=
     if not isinstance(train_data, tuple) and not U.is_huggingface_from_data(train_data):
         err = """
             Please pass training data in the form of a tuple of numpy.ndarrays
-            or data returned from a ktrain texts_from* function.
+            or data returned from a deepwrap texts_from* function.
             """
         raise Exception(err)
 
@@ -438,9 +438,9 @@ def text_classifier(name, train_data, preproc=None, multilabel=None, metrics=['a
                       - 'bigru' for Bidirectional GRU with pretrained word vectors
                       - 'bert' for BERT Text Classification
                       - 'distilbert' for Hugging Face DistilBert model
-        train_data (tuple): a tuple of numpy.ndarrays: (x_train, y_train) or ktrain.Dataset instance
+        train_data (tuple): a tuple of numpy.ndarrays: (x_train, y_train) or deepwrap.Dataset instance
                             returned from one of the texts_from_* functions
-        preproc: a ktrain.text.TextPreprocessor instance.
+        preproc: a deepwrap.text.TextPreprocessor instance.
                  As of v0.8.0, this is required.
         multilabel (bool):  If True, multilabel model will be returned.
                             If false, binary/multiclass model will be returned.
@@ -470,7 +470,7 @@ def text_regression_model(name, train_data, preproc=None, metrics=['mae'], verbo
                       - 'bert' for BERT Text Classification
                       - 'distilbert' for Hugging Face DistilBert model
         train_data (tuple): a tuple of numpy.ndarrays: (x_train, y_train)
-        preproc: a ktrain.text.TextPreprocessor instance.
+        preproc: a deepwrap.text.TextPreprocessor instance.
                  As of v0.8.0, this is required.
         metrics(list): metrics to use
         verbose (boolean): verbosity of output
