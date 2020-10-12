@@ -40,7 +40,7 @@ def _tabular_model(name, train_data, multilabel=None, is_regression=False, metri
     # check arguments
     if not U.is_tabular_from_data(train_data):
         err ="""
-            Please pass training data in the form of data returned from a ktrain tabular_from* function.
+            Please pass training data in the form of data returned from a deepwrap tabular_from* function.
             """
         raise Exception(err)
     if len(hidden_layers) != len(hidden_dropouts): raise ValueError('len(hidden_layers) must equal len(hidden_dropouts)')
