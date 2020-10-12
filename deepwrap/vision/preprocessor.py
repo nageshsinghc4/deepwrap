@@ -67,8 +67,8 @@ class ImagePreprocessor(Preprocessor):
         elif os.path.isfile(data):
             if self.target_size is None or self.color_mode is None:
                 raise Exception('To use predict_filename, you must load the data using either ' + \
-                                'the ktrain.vision.images_from_folder function or the ' + \
-                                'ktrain.vision.images_from_csv function.')
+                                'the deepwrap.vision.images_from_folder function or the ' + \
+                                'deepwrap.vision.images_from_csv function.')
             img = image.load_img(data, target_size=self.target_size, color_mode=self.color_mode)
             x = image.img_to_array(img)
             x = np.expand_dims(x, axis=0)
