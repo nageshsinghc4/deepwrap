@@ -18,7 +18,7 @@ class NER:
         self.lang = lang
         if os.environ.get('DISABLE_V2_BEHAVIOR', None) != '1':
             warnings.warn("Please add os.environ['DISABLE_V2_BEHAVIOR'] = '1' at top of your script or notebook")
-            msg = "\nNER in ktrain uses the CRF module from keras_contrib, which is not yet\n" +\
+            msg = "\nNER in deepwrap uses the CRF module from keras_contrib, which is not yet\n" +\
                     "fully compatible with TensorFlow 2. To use NER, you must add the following to the top of your\n" +\
                     "script or notebook BEFORE you import deepwrap (after restarting runtime):\n\n" +\
                   "import os\n" +\
@@ -77,44 +77,3 @@ class NER:
             results.append(result)
         if len(result) == 1: result = result[0]
         return result
-
-
-    # 2020-04-30: moved to text.ner.predictor
-    #def merge_tokens(self, annotated_sentence):
-    #    if self.lang.startswith('zh'):
-    #        sep = ''
-    #    else:
-    #        sep = ' '
-    #    current_token = ""
-    #    current_tag = ""
-    #    entities = []
-
-    #    for tup in annotated_sentence:
-    #        token = tup[0]
-    #        entity = tup[1]
-    #        tag = entity.split('-')[1] if '-' in entity else None
-    #        prefix = entity.split('-')[0] if '-' in entity else None
-    #        # not within entity
-    #        if tag is None and not current_token:
-    #            continue
-    #        # beginning of entity
-    #        #elif tag and prefix=='B':
-    #        elif tag and (prefix=='B' or prefix=='I' and not current_token):
-    #            if current_token: # consecutive entities
-    #                entities.append((current_token, current_tag))
-    #                current_token = ""
-    #                current_tag = None
-    #            current_token = token
-    #            current_tag = tag
-    #        # end of entity
-    #        elif tag is None and current_token:
-    #            entities.append((current_token, current_tag))
-    #            current_token = ""
-    #            current_tag = None
-    #            continue
-    #        # within entity
-    #        elif tag and current_token:  #  prefix I
-    #            current_token = current_token + sep + token
-    #            current_tag = tag
-    #    return entities  
-
