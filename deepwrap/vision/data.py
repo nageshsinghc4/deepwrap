@@ -110,7 +110,7 @@ def get_data_aug(
     Returns the default image_data_generator to support
     data augmentation and data normalization.
     Parameters can be adjusted by caller.
-    Note that the ktrain.vision.model.image_classifier
+    Note that the deepwrap.vision.model.image_classifier
     function may adjust these as needed.
     """
 
