@@ -1,7 +1,7 @@
 import sys
 
 if sys.version_info.major != 3:
-    raise Exception('DLTKDL requires Python 3.x')
+    raise Exception('DEEPWRAP requires Python 3.x')
 tf_version_str = 'tensorflow==2.3.0'
 if sys.version_info.minor == 8:
     tf_version_str = 'tensorflow>=2.2.0'
@@ -12,21 +12,21 @@ import setuptools
 with open('README.md', encoding='utf-8') as readme_file:
     readme_file.readline()
     readme = readme_file.read()
-exec(open('dltkdl/version.py').read())
+exec(open('deepwrap/version.py').read())
 
 setup(
-    name='DLTKDL',
+    name='DEEPWRAP',
     packages=setuptools.find_packages(),
-    package_data={'DLTKDL': ['text/shallownlp/ner_models/*']},
+    package_data={'DEEPWRAP': ['text/shallownlp/ner_models/*']},
     version=setuptools.__version__,
     license='Apache License 2.0',
-    description='DLTKDL is a wrapper for TensorFlow and Keras that makes deep learning and AI more accessible and '
+    description='DEEPWRAP is a wrapper for TensorFlow and Keras that makes deep learning and AI more accessible and '
                 'easier to apply',
     long_description=readme,
     long_description_content_type='text/markdown',
-    author='DLTK',
-    author_email="connect@qubitai.tech",
-    # url = 'https://github.com/dltk-ai/Deep-Learning',
+    author='nageshsinghc4',
+    author_email="nageshsinghc4@gmail.com",
+    # url = 'https://github.com/nageshsinghc4/deepwrap',
     keywords=['tensorflow', 'keras', 'deep learning', 'machine learning'],
     install_requires=[
         tf_version_str,
