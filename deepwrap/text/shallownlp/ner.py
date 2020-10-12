@@ -72,8 +72,6 @@ class NER:
         for text in texts:
             text = text.strip()
             result = self.predictor.predict(text, merge_tokens=merge_tokens)
-            #if merge_tokens:
-                #result = self.merge_tokens(result)
             results.append(result)
         if len(result) == 1: result = result[0]
         return result
