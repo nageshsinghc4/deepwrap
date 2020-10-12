@@ -12,8 +12,8 @@ x_test = x_test.astype('float32')
 x_train = np.expand_dims(x_train, axis=3)
 x_test = np.expand_dims(x_test, axis=3)
 
-import dltkdl
-from dltkdl import vision as vis
+import deepwrap
+from deepwrap import vision as vis
 
 data_aug = vis.get_data_aug(rotation_range=15,
                             zoom_range=0.1,
@@ -31,7 +31,7 @@ classes = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight
 # Using a LeNet-style classifier
 model = vis.image_classifier('default_cnn', trn, val)
 
-learner = dltkdl.get_learner(model, train_data=trn, val_data=val, batch_size=128)
+learner = deepwrap.get_learner(model, train_data=trn, val_data=val, batch_size=128)
 
 learner.lr_find(show_plot=True, max_epochs=3)
 
@@ -40,7 +40,7 @@ learner.validate(class_names=preproc.get_classes())
 
 learner.view_top_losses(n=1)
 
-predictor = dltkdl.get_predictor(learner.model, preproc)
+predictor = deepwrap.get_predictor(learner.model, preproc)
 
 predictor.predict(x_test[0:1])[0]
 
@@ -48,7 +48,7 @@ np.argmax(predictor.predict(x_test[0:1], return_proba=True)[0])
 
 predictor.save('/my_mnist')
 
-p = dltkdl.load_predictor('/my_mnist')
+p = deepwrap.load_predictor('/my_mnist')
 
 p.predict(x_test[0:1])[0]
 
