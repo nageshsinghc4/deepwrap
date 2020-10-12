@@ -10,9 +10,9 @@ Install TensorFlow 2 if it is not already installed (e.g., pip install tensorflo
 
 Install deepwrap: 
 ```
-git clone https://github.com/dltk-ai/Deep-Learning
+git clone https://github.com/nageshsinghc4/deepwrap
 
-cd Deep-Learning
+cd deepwrap
 
 python setup.py install or pip install .
 ```
