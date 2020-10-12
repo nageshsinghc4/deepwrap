@@ -21,10 +21,10 @@ random.seed(seed_value)
 np.random.seed(seed_value)
 tf.random.set_seed(seed_value)
 
-import dltkdl
-from dltkdl import tabledata
+import deepwrap
+from deepwrap import tabledata
 
-train_df = pd.read_csv('/Users/nageshsinghchauhan/Documents/Qubit/DLTK-DL/examples/titanic/train.csv', index_col=0)
+train_df = pd.read_csv('/deepwrap/examples/titanic/train.csv', index_col=0)
 print(train_df.head())
 
 train_df = train_df.drop('Name', 1)
@@ -50,7 +50,7 @@ trn, val, preproc = tabledata.load_from_dataframe(train_df, label_columns=['Surv
 tabledata.print_tabular_classifiers()
 
 model = tabledata.tabular_classifier('mlp', trn)
-learner = dltkdl.get_learner(model, train_data=trn, val_data=val, batch_size=32)
+learner = deepwrap.get_learner(model, train_data=trn, val_data=val, batch_size=32)
 
 learner.lr_find(show_plot=True, max_epochs=5)
 
@@ -58,17 +58,9 @@ learner.fit_onecycle(5e-3, 10)
 
 learner.evaluate(val, class_names=preproc.get_classes())
 
-predictor = dltkdl.get_predictor(learner.model, preproc)
+predictor = deepwrap.get_predictor(learner.model, preproc)
 
 preds = predictor.predict(test_df, return_proba=True)
 
 print('test accuracy:')
 (np.argmax(preds, axis=1) == test_df['Survived'].values).sum() / test_df.shape[0]
-"""
-df = test_df.copy()[[c for c in test_df.columns.values if c != 'Survived']]
-df['Survived'] = test_df['Survived']
-df['predicted_Survived'] = np.argmax(preds, axis=1)
-df.head()
-
-predictor.explain(test_df, row_index=35, class_id=1)
-"""
