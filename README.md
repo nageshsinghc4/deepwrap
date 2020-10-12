@@ -17,7 +17,7 @@ cd deepwrap
 python setup.py install or pip install .
 ```
 
-The above should be all you need on Linux systems and cloud computing environments like Google Colab and AWS EC2. If you are using deepwrap on a Windows computer, you can follow these more [detailed instructions](https://github.com/dltk-ai/Deep-Learning/blob/master/FAQ.md) that include some extra steps.
+The above should be all you need on Linux systems and cloud computing environments like Google Colab and AWS EC2.
 
 Some important things to note about installation:
 
