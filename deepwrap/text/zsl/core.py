@@ -1,13 +1,8 @@
-# 2020-08-10: unnecessary imports removed for ZSL to address #225
-# from ...imports import *
-# from ... import utils as U
-
 import math
 import warnings
 import numpy as np
 
-
-# duplicated from dltkdl.utils
+# duplicated from deepwrap.utils
 def list2chunks(a, n):
     k, m = divmod(len(a), n)
     return (a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(n))
