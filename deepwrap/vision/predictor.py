@@ -43,8 +43,8 @@ class ImagePredictor(Predictor):
             return
 
         # if not hasattr(eli5, 'DLTKDL'):
-        if not hasattr(eli5, 'DLTKDL_ELI5_TAG') or eli5.DLTKDL_ELI5_TAG != KTRAIN_ELI5_TAG:
-            warnings.warn("Since eli5 does not yet support tf.keras, ktrain uses a forked version of eli5.  " + \
+        if not hasattr(eli5, 'DEEPWRAP_ELI5_TAG') or eli5.DEEPWRAP_ELI5_TAG != DEEPWRAP_ELI5_TAG:
+            warnings.warn("Since eli5 does not yet support tf.keras, deepwrap uses a forked version of eli5.  " + \
                           "We do not detect this forked version (or it is out-of-date), so predictor.explain may not "
                           "work.  " + \
                           "It will work if you uninstall the current version of eli5 and install " + \
@@ -56,7 +56,7 @@ class ImagePredictor(Predictor):
             warnings.warn("Please add os.environ['DISABLE_V2_BEHAVIOR'] = '1' at top of your script or notebook.")
             msg = "\nFor image classification, the explain method currently requires disabling V2 behavior in " \
                   "TensorFlow 2.\n" + \
-                  "Please add the following to the top of your script or notebook BEFORE you import ktrain and " \
+                  "Please add the following to the top of your script or notebook BEFORE you import deepwrap and " \
                   "restart Colab runtime or Jupyter kernel:\n\n" + \
                   "import os\n" + \
                   "os.environ['DISABLE_V2_BEHAVIOR'] = '1'\n"
