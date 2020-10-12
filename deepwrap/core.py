@@ -6,7 +6,6 @@ from .optimizer.optimization import AdamWeightDecay
 from . import utils as U
 from .vision.preprocessor import ImagePreprocessor
 from .vision.predictor import ImagePredictor
-
 from .text.preprocessor import TextPreprocessor, BERTPreprocessor, TransformersPreprocessor
 from .text.predictor import TextPredictor
 from .text.ner.predictor import NERPredictor
