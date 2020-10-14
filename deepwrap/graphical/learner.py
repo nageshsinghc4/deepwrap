@@ -64,7 +64,7 @@ class NodeClassLearner(GenLearner):
         Uses first example (example_id=0) from training set, by default.
         """
         raise Exception('currently_unsupported: layer_output method is not yet supported for ' +
-                        'graph neural networks in ktrain')
+                        'graph neural networks in deepwrap')
 
 
 class LinkPredLearner(GenLearner):
@@ -128,4 +128,4 @@ class LinkPredLearner(GenLearner):
         Uses first example (example_id=0) from training set, by default.
         """
         raise Exception('currently_unsupported: layer_output method is not yet supported for ' +
-                        'graph neural networks in ktrain')
+                        'graph neural networks in deepwrap')
