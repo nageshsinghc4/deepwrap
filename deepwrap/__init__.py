@@ -1,7 +1,7 @@
 from .version import __version__
 from . import imports as I
 from .core import ArrayLearner, GenLearner, get_predictor, load_predictor, release_gpu_memory
-from .vision.gan import BATCH_SIZE, epochs, cbk
+#from .vision.gan import BATCH_SIZE, epochs, cbk
 from .vision.learner import ImageClassLearner
 from .vision import models
 from .text.learner import BERTTextClassLearner, TransformerTextClassLearner
