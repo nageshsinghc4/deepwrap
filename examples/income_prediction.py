@@ -36,9 +36,9 @@ learner.autofit(1e-3)
 learner.validate(class_names=preproc.get_classes())
 
 urllib.request.urlretrieve('https://autogluon.s3.amazonaws.com/datasets/Inc/test.csv',
-                           '/Users/nageshsinghchauhan/Documents/Qubit/DLTK-DL/examples/test.csv')
+                           '/deepwrap/examples/test.csv')
 
-test_df = pd.read_csv('/Users/nageshsinghchauhan/Documents/Qubit/DLTK-DL/examples/test.csv')
+test_df = pd.read_csv('/deepwrap/examples/test.csv')
 print(test_df)
 
 learner.evaluate(preproc.preprocess_test(test_df), class_names=preproc.get_classes())
