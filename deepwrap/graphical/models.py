@@ -27,7 +27,7 @@ def graph_node_classifier(name, train_data, layer_sizes=[32, 32], verbose=1):
         name (string): one of:
                       - 'graphsage' for GraphSAGE model
                       (only GraphSAGE currently supported)
-        train_data (NodeSequenceWrapper): a ktrain.graph.sg_wrappers.NodeSequenceWrapper object
+        train_data (NodeSequenceWrapper): a deepwrap.graph.sg_wrappers.NodeSequenceWrapper object
         verbose (boolean): verbosity of output
     Return:
         model (Model): A Keras Model instance
@@ -37,7 +37,7 @@ def graph_node_classifier(name, train_data, layer_sizes=[32, 32], verbose=1):
     # check argument
     if not isinstance(train_data, NodeSequenceWrapper):
         err = """
-            train_data must be a ktrain.graph.sg_wrappers.NodeSequenceWrapper object
+            train_data must be a deepwrap.graph.sg_wrappers.NodeSequenceWrapper object
             """
         raise Exception(err)
     if len(layer_sizes) != 2:
@@ -89,7 +89,7 @@ def graph_link_predictor(name, train_data, preproc, layer_sizes=[20, 20], verbos
         name (string): one of:
                       - 'graphsage' for GraphSAGE model
                       (only GraphSAGE currently supported)
-        train_data (LinkSequenceWrapper): a ktrain.graph.sg_wrappers.LinkSequenceWrapper object
+        train_data (LinkSequenceWrapper): a deepwrap.graph.sg_wrappers.LinkSequenceWrapper object
         preproc(LinkPreprocessor): a LinkPreprocessor instance
         verbose (boolean): verbosity of output
     Return:
@@ -100,7 +100,7 @@ def graph_link_predictor(name, train_data, preproc, layer_sizes=[20, 20], verbos
     # check argument
     if not isinstance(train_data, LinkSequenceWrapper):
         err = """
-            train_data must be a ktrain.graph.sg_wrappers.LinkSequenceWrapper object
+            train_data must be a deepwrap.graph.sg_wrappers.LinkSequenceWrapper object
             """
         raise Exception(err)
     if len(layer_sizes) != len(preproc.sample_sizes):
