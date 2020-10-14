@@ -3,7 +3,7 @@ from .imports import *
 
 class Dataset:
     """
-    Base class for custom datasets in dltk-dl.
+    Base class for custom datasets in deepwrap.
     If subclass of Dataset implements a method to to_tfdataset
     that converts the data to a tf.Dataset, then this will be
     invoked by Learner instances just prior to training so
