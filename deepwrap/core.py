@@ -105,7 +105,7 @@ class Learner(ABC):
 
     def validate(self, val_data=None,
                  print_report=True,
-                 save_path='dltk-dl_classification_report.csv',
+                 save_path='deepwrap_classification_report.csv',
                  class_names=[]):
         """
         Returns confusion matrix and optionally prints
