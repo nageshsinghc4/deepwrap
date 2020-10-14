@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DLTK-DL.iml" filepath="$PROJECT_DIR$/.idea/DLTK-DL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/deepwrap.iml" filepath="$PROJECT_DIR$/.idea/deepwrap.iml" />
     </modules>
   </component>
 </project>
