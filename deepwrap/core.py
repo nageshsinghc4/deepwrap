@@ -81,7 +81,7 @@ class Learner(ABC):
         self._recompile(wd=wd)
         return
 
-    def evaluate(self, test_data=None, print_report=True, save_path='ktrain_classification_report.csv', class_names=[]):
+    def evaluate(self, test_data=None, print_report=True, save_path='deepwrap_classification_report.csv', class_names=[]):
         """
         alias for self.validate().
         Returns confusion matrix and optionally prints
@@ -978,7 +978,7 @@ class ArrayLearner(Learner):
     """
     Main class used to tune and train Keras models
     using Array data.  An objects of this class should be instantiated
-    via the ktrain.get_learner method instead of directly.
+    via the deepwrap.get_learner method instead of directly.
     Main parameters are:
 
     model (Model):        A compiled instance of keras.engine.training.Model
@@ -1144,7 +1144,7 @@ class GenLearner(Learner):
     Main class used to tune and train Keras models
     using a Keras generator (e.g., DirectoryIterator).
     Objects of this class should be instantiated using the
-    ktrain.get_learner function, rather than directly.
+    deepwrap.get_learner function, rather than directly.
     Main parameters are:
     model (Model): A compiled instance of keras.engine.training.Model
     train_data (Iterator): a Iterator instance for training set
@@ -1328,13 +1328,13 @@ def get_predictor(model, preproc, batch_size=U.DEFAULT_BS):
         preproc(Preprocessor):   An instance of TextPreprocessor,ImagePreprocessor,
                                  or NERPreprocessor.
                                  These instances are returned from the data loading
-                                 functions in the ktrain vision and text modules:
-                                 ktrain.vision.images_from_folder
-                                 ktrain.vision.images_from_csv
-                                 ktrain.vision.images_from_array
-                                 ktrain.text.texts_from_folder
-                                 ktrain.text.texts_from_csv
-                                 ktrain.text.ner.entities_from_csv
+                                 functions in the deepwrap vision and text modules:
+                                 deepwrap.vision.images_from_folder
+                                 deepwrap.vision.images_from_csv
+                                 deepwrap.vision.images_from_array
+                                 deepwrap.text.texts_from_folder
+                                 deepwrap.text.texts_from_csv
+                                 deepwrap.text.ner.entities_from_csv
         batch_size(int):    batch size to use.  default:32
     """
 
@@ -1345,7 +1345,7 @@ def get_predictor(model, preproc, batch_size=U.DEFAULT_BS):
     if not isinstance(preproc, (ImagePreprocessor, TabularPreprocessor, TextPreprocessor, NERPreprocessor)):
         # NodePreprocessor, LinkPreprocessor
 
-        raise ValueError('preproc must be instance of ktrain.preprocessor.Preprocessor')
+        raise ValueError('preproc must be instance of deepwrap.preprocessor.Preprocessor')
     if isinstance(preproc, ImagePreprocessor):
         return ImagePredictor(model, preproc, batch_size=batch_size)
     elif isinstance(preproc, TextPreprocessor):
@@ -1511,7 +1511,7 @@ def _load_model(fpath, preproc=None, train_data=None, custom_objects=None):
         print('Error was: %s' % e)
         return
 
-    # see issue https://github.com/amaiya/ktrain/issues/21
+    
     if hasattr(model, '_make_predict_function'):
         model._make_predict_function()
 
