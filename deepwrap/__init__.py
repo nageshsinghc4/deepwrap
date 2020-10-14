@@ -1,12 +1,15 @@
 from .version import __version__
 from . import imports as I
 from .core import ArrayLearner, GenLearner, get_predictor, load_predictor, release_gpu_memory
+from .vision.gan import BATCH_SIZE, epochs, cbk
 from .vision.learner import ImageClassLearner
+from .vision import models
 from .text.learner import BERTTextClassLearner, TransformerTextClassLearner
 from .text.ner.learner import NERLearner
-# from .graph.learner import NodeClassLearner, LinkPredLearner
+from .graphical.learner import NodeClassLearner, LinkPredLearner
 from .data import Dataset, TFDataset, SequenceDataset
 from . import utils as U
+from IPython.display import Image, display
 
 __all__ = ['get_learner', 'get_predictor', 'load_predictor', 'Dataset', 'TFDataset', 'release_gpu_memory',
            'SequenceDataset']
@@ -96,12 +99,12 @@ def get_learner(model, train_data=None, val_data=None,
             learner = ImageClassLearner
         elif U.is_ner(model=model, data=train_data):
             learner = NERLearner
-        # elif U.is_nodeclass(data=train_data):
-        #    learner = NodeClassLearner
-        # elif U.is_nodeclass(data=train_data):
-        #    learner = LinkPredLearner
         elif U.is_huggingface(data=train_data):
             learner = TransformerTextClassLearner
+        elif U.is_nodeclass(data=train_data):
+            learner = NodeClassLearner
+        elif U.is_nodeclass(data=train_data):
+            learner = LinkPredLearner
         else:
             learner = GenLearner
     else:
@@ -113,3 +116,18 @@ def get_learner(model, train_data=None, val_data=None,
     return learner(model, train_data=train_data, val_data=val_data,
                    batch_size=batch_size, eval_batch_size=eval_batch_size,
                    workers=workers, use_multiprocessing=use_multiprocessing, multigpu=multigpu)
+
+
+"""
+def gan_train(train_data):
+    if U.is_iter(train_data):
+        train = models.image_gan_model('gan', train_data)
+
+        train.fit(train_data, batch_size=BATCH_SIZE, epochs=epochs, callbacks=[cbk])
+
+
+
+    display(Image("generated_img_0_19.png"))
+    display(Image("generated_img_1_19.png"))
+    display(Image("generated_img_2_19.png"))
+"""

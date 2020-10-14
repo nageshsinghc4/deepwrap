@@ -15,9 +15,9 @@ with open('README.md', encoding='utf-8') as readme_file:
 exec(open('deepwrap/version.py').read())
 
 setup(
-    name='DEEPWRAP',
+    name='deepwrap',
     packages=setuptools.find_packages(),
-    package_data={'DEEPWRAP': ['text/shallownlp/ner_models/*']},
+    package_data={'deepwrap': ['text/shallownlp/ner_models/*']},
     version=setuptools.__version__,
     license='Apache License 2.0',
     description='DEEPWRAP is a wrapper for TensorFlow and Keras that makes deep learning and AI more accessible and '
@@ -26,7 +26,7 @@ setup(
     long_description_content_type='text/markdown',
     author='nageshsinghc4',
     author_email="nageshsinghc4@gmail.com",
-    # url = 'https://github.com/nageshsinghc4/deepwrap',
+    url = 'https://github.com/nageshsinghc4/deepwrap',
     keywords=['tensorflow', 'keras', 'deep learning', 'machine learning'],
     install_requires=[
         tf_version_str,
@@ -52,6 +52,7 @@ setup(
         'ipython',
         'syntok',
         'whoosh',
+        'stellargraph',
         # these libraries are manually installed on-the-fly when required by an invoked method
         # 'shap',  # used by TabularPredictor.explain
         # 'eli5 >= 0.10.0', # forked version used by TextPredictor.explain and ImagePredictor.explain
