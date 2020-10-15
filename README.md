@@ -103,6 +103,36 @@ learner.lr_plot()             # visually identify best learning rate
 # train using triangular policy with ModelCheckpoint and implicit ReduceLROnPlateau and EarlyStopping
 learner.autofit(1e-4, checkpoint_folder='/tmp/saved_weights')
 ```
+Example: Node Classification on Cora Citation Graph using a GraphSAGE model 
+
+```
+import deepwrap
+from deepwrap import graph as gr
+
+# load data with supervision ratio of 10%
+(trn, val, preproc)  = gr.graph_nodes_from_csv(
+                                               'cora.content', # node attributes/labels
+                                               'cora.cites',   # edge list
+                                               sample_size=20, 
+                                               holdout_pct=None, 
+                                               holdout_for_inductive=False,
+                                              train_pct=0.1, sep='\t')
+
+# load model
+model=gr.graph_node_classifier('graphsage', trn)
+
+# wrap model and data in ktrain.Learner object
+learner = deepwrap.get_learner(model, train_data=trn, val_data=val, batch_size=64)
+
+
+# find good learning rate
+learner.lr_find(max_epochs=100) # briefly simulate training to find good learning rate
+learner.lr_plot()               # visually identify best learning rate
+
+# train using triangular policy with ModelCheckpoint and implicit ReduceLROnPlateau and EarlyStopping
+learner.autofit(0.01, checkpoint_folder='/tmp/saved_weights')
+```
+
 Example: **Language translation(English to Dutch)**
 ```
 from deepwrap import text 
