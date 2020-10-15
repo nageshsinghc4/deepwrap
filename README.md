@@ -1,6 +1,6 @@
 # DeepWrap
 
-**DEEPWRAP** is a lightweight wrapper for the deep learning library TensorFlow and Keras (and other libraries) to help build, train, and deploy neural networks and other machine learning models. Inspired by ML framework extensions like fastai and ludwig, it is designed to make deep learning and AI more accessible and easier to apply for both newcomers and experienced practitioners. With only a few lines of code, deepwrap allows you to easily and quickly build, train, and deploy neural networks
+**DEEPWRAP** is a wrapper for the deep learning libraries TensorFlow and Keras to help build, train, and deploy neural networks and other machine learning models. Inspired by ML framework extensions like fastai and ludwig, it is designed to make deep learning and AI more accessible and easier to apply for both newcomers and experienced practitioners. With only a few lines of code, deepwrap allows you to easily and quickly build, train, and deploy neural networks
 
 **Installation Instructions**
 
