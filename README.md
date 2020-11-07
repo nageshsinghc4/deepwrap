@@ -29,10 +29,10 @@ Since some deepwrap dependencies have not yet been migrated to tf.keras in Tenso
 
 ### Available algorithms under deepwrap:
 
-#### Artificial Neural Network : For tabular dataset. 
+#### Artificial Neural Network(ANN) : For tabular dataset. 
 1. **mlp**: a configurable multilayer perceptron with categorical variable embeddings.
 
-#### Convolutional Neural Network : For image/video dataset
+#### Convolutional Neural Network(CNN) : For image/video dataset
 1. **pretrained_resnet50**: 50-layer Residual Network (pretrained on ImageNet)
 2. **resnet50**: 50-layer Residual Network (randomly initialized)
 3. **pretrained_mobilenet**: MobileNet Neural Network (pretrained on ImageNet)
@@ -42,7 +42,7 @@ Since some deepwrap dependencies have not yet been migrated to tf.keras in Tenso
 7. **wrn22**: 22-layer Wide Residual Network (randomly initialized)
 8. **default_cnn**: a default Convolutional Neural Network
 
-#### Recurrent neural Network : For sequenced datasets like text.
+#### Recurrent neural Network(RNN)/LSTM/GRU : For sequenced datasets like text, time series data.
 **For Classification:**
 1. **FASTTEXT**: "a fastText-like model [http://arxiv.org/pdf/1607.01759.pdf]",
 2. **LOGREG**: "logistic regression using a trainable Embedding layer",
