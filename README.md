@@ -43,13 +43,24 @@ Since some deepwrap dependencies have not yet been migrated to tf.keras in Tenso
 8. **default_cnn**: a default Convolutional Neural Network
 
 #### Recurrent neural Network : For sequenced datasets like text.
-1. **fasttext**: a fastText-like model [http://arxiv.org/pdf/1607.01759.pdf]
-2. **logreg**: logistic regression using a trainable Embedding layer
-3. **nbsvm**: NBSVM model [http://www.aclweb.org/anthology/P12-2018]
-4. **bigru**: Bidirectional GRU with pretrained word vectors [https://arxiv.org/abs/1712.09405]
-5. **standard_gru**: simple 2-layer GRU with randomly initialized embeddings
-6. **bert**: Bidirectional Encoder Representations from Transformers (BERT) [https://arxiv.org/abs/1810.04805]
-7. **distilbert**: distilled, smaller, and faster BERT from Hugging Face [https://arxiv.org/abs/1910.01108]
+**For Classification:**
+1. **FASTTEXT**: "a fastText-like model [http://arxiv.org/pdf/1607.01759.pdf]",
+2. **LOGREG**: "logistic regression using a trainable Embedding layer",
+3. **NBSVM**: "NBSVM model [http://www.aclweb.org/anthology/P12-2018]",
+4. **BIGRU**: 'Bidirectional GRU with pretrained fasttext word vectors [https://fasttext.cc/docs/en/crawl-vectors.html]',
+5. **STANDARD_GRU**: 'simple 2-layer GRU with randomly initialized embeddings',
+6. **BERT**: 'Bidirectional Encoder Representations from Transformers (BERT) [https://arxiv.org/abs/1810.04805]',
+7. **DISTILBERT**: 'distilled, smaller, and faster BERT from Hugging Face [https://arxiv.org/abs/1910.01108]',
+
+
+**For Regression:**
+1. **FASTTEXT**: "a fastText-like model [http://arxiv.org/pdf/1607.01759.pdf]",
+2. **LINREG**: "linear text regression using a trainable Embedding layer",
+3. **BIGRU**: 'Bidirectional GRU with pretrained English word vectors [https://arxiv.org/abs/1712.09405]',
+4. **STANDARD_GRU**: 'simple 2-layer GRU with randomly initialized embeddings',
+5. **BERT**: 'Bidirectional Encoder Representations from Transformers (BERT) [https://arxiv.org/abs/1810.04805]',
+6. **DISTILBERT**: 'distilled, smaller, and faster BERT from Hugging Face [https://arxiv.org/abs/1910.01108]',
+
 
 ### Examples: 
 
