@@ -8,4 +8,4 @@ __all__ = [
            'print_link_predictors',
            'graph_node_classifier',
            'graph_link_predictor'
-           ]
+]
